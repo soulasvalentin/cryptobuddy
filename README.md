@@ -43,6 +43,10 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 **v1.3.0** *(5JAN21)*
 
+- Added Decrypto support
+
+**v1.3.0** *(5JAN21)*
+
 - Added Satoshitango support
 
 **v1.2.1** *(5JAN21)*
