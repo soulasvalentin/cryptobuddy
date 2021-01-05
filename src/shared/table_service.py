@@ -5,8 +5,8 @@ from azure.cosmosdb.table.models import Entity
 from shared.version import current_version
 import os
 
-table_name = os.environ["TABLE_NAME"]
-table_account_key = os.environ["TABLE_ACCOUNT_KEY"]
+table_name = os.environ["SA_NAME"]
+table_account_key = os.environ["SA_ACCOUNT_KEY"]
 table_service = TableService(account_name=table_name, account_key=table_account_key)
 
 CURRENT_TABLENAME = 'current'

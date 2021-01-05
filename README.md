@@ -24,15 +24,15 @@ If you wish to debug locally, create the following **configuration file** in `sr
   "IsEncrypted": false,
   "Values": {
     "FUNCTIONS_WORKER_RUNTIME": "python",
-    "TABLE_ACCOUNT_KEY": "<storage_account_key>",
-    "TABLE_NAME": "<storage_account_table_name>"
+    "SA_NAME": "<storage_account_table_name>",
+    "SA_ACCOUNT_KEY": "<storage_account_key>"
   }
 }
 ```
 
 If you wish to deploy your own version, create a **StorageAccount** with the tables `current` and `history` and make sure that your Function App has the following environment variables configured:
-- `TABLE_ACCOUNT_KEY`
-- `TABLE_NAME`
+- `SA_NAME`
+- `SA_ACCOUNT_KEY`
 
 ## Docs
 
@@ -40,6 +40,10 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 - [Work with Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cpython%2Cbash)
 
 ## Changelog
+
+**v1.2.1** *(5JAN21)*
+
+- Fix environment variables names
 
 **v1.2.0** *(5JAN21)*
 
