@@ -1,8 +1,8 @@
 ## Introduction
 
-**CryptoBuddy** obtains cryptos *buy* & *sell* rates periodically and stores them to allow for market analysis. This is an Azure Functions project in Python. The function is triggered with a CRON expresion and retrieves and saves the data. A separate set of HTTP triggered functions will perform and return valuable analysis on the data when invoked.
+**CryptoBuddy** obtains cryptos *buy* & *sell* rates periodically and stores them to allow for market analysis. This is an **Azure Functions** project in Python. The function is triggered with a CRON expresion and retrieves and saves the data. A separate set of HTTP triggered functions will perform and return valuable analysis on the data when invoked.
 
-At this stage, only BTC-ARS rates from Argentinean exchanges are supported.
+At this stage, only **BTC-ARS** rates from Argentinean exchanges are supported.
 
 ## Getting started
 
@@ -17,7 +17,7 @@ pip install bs4
 pip install azure-cosmosdb-table
 ```
 
-If you wish to debug locally, create the following configuration file in `src/locals.settings.json`
+If you wish to debug locally, create the following **configuration file** in `src/locals.settings.json`
 
 ```json
 {
@@ -29,6 +29,10 @@ If you wish to debug locally, create the following configuration file in `src/lo
   }
 }
 ```
+
+If you wish to deploy your own version, create a **StorageAccount** with the tables `current` and `history` and make sure that your Function App has the following environment variables configured:
+- `TABLE_ACCOUNT_KEY`
+- `TABLE_NAME`
 
 ## Docs
 
