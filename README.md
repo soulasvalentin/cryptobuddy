@@ -38,6 +38,7 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 - [Azure Functions Python developer guide](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python)
 - [Work with Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cpython%2Cbash)
+- [Getting started with Azure Table storage API](https://docs.microsoft.com/en-us/azure/cosmos-db/table-storage-how-to-use-python)
 
 ## Changelog
 
