@@ -41,15 +41,19 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 ## Changelog
 
+**v1.3.0** *(5JAN21)*
+
+- Added Satoshitango support
+
 **v1.2.1** *(5JAN21)*
 
 - Fix environment variables names
 
 **v1.2.0** *(5JAN21)*
 
-- Added BuenBit scraper
-- Added CryptoMarket scraper
-- Added Ripio scraper
+- Added BuenBit support
+- Added CryptoMarket support
+- Added Ripio support
 
 **v1.1.1** *(5JAN21)*
 

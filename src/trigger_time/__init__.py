@@ -1,6 +1,6 @@
 import azure.functions as func
 import logging
-from scrapers import letsbit, buenbit, cryptomkt, ripio
+from scrapers import letsbit, buenbit, cryptomkt, ripio, satoshitango
 from shared.version import current_version
 
 def main(mytimer: func.TimerRequest) -> None:
@@ -10,3 +10,4 @@ def main(mytimer: func.TimerRequest) -> None:
     buenbit.scrap()
     cryptomkt.scrap()
     ripio.scrap()
+    satoshitango.scrap()
