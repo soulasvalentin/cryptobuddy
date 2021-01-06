@@ -4,6 +4,12 @@
 
 At this stage, only **BTC-ARS** rates from Argentinean exchanges are supported.
 
+## Available endpoints
+
+> Base url: https://cryptobuddy.azurewebsites.net/api
+
+- `GET /get_current` Returns the latest rates of every exchange
+
 ## Getting started
 
 - Download and install Azure Function Core Tools version 3.x [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#install-the-azure-functions-core-tools).
