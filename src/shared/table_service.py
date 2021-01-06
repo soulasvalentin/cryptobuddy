@@ -12,7 +12,7 @@ table_service = TableService(account_name=table_name, account_key=table_account_
 CURRENT_TABLENAME = 'current'
 HISTORY_TABLENAME = 'history'
 
-def save_current(exchange, buy, sell):    
+def save_current(exchange, buy, sell):
     logging.info("[table_service] saving as current..")
 
     entity = {
@@ -24,7 +24,7 @@ def save_current(exchange, buy, sell):
 
     table_service.insert_or_merge_entity(CURRENT_TABLENAME, entity)
 
-def save_history(exchange, buy, sell):    
+def save_history(exchange, buy, sell):
     logging.info("[table_service] saving as history..")
 
     entity = {
@@ -36,3 +36,10 @@ def save_history(exchange, buy, sell):
     }
 
     table_service.insert_or_merge_entity(HISTORY_TABLENAME, entity)
+
+def get_current():
+    logging.info("[table_service] get current..")
+
+    entities = table_service.query_entities(CURRENT_TABLENAME, filter="PartitionKey eq 'current_price'")
+
+    return entities.items

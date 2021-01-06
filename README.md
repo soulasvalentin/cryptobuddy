@@ -15,6 +15,8 @@ At this stage, only **BTC-ARS** rates from Argentinean exchanges are supported.
 pip install requests
 pip install bs4
 pip install azure-cosmosdb-table
+pip install azure.functions
+pip install py_linq
 ```
 
 If you wish to debug locally, create the following **configuration file** in `src/locals.settings.json`
@@ -42,7 +44,11 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 ## Changelog
 
-**v1.3.0** *(5JAN21)*
+**v1.5.0** *(5JAN21)*
+
+- Added get_current endpoint
+
+**v1.4.0** *(5JAN21)*
 
 - Added Decrypto support
 
