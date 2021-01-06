@@ -50,9 +50,13 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 ## Changelog
 
+**v1.5.2** *(6JAN21)*
+
+- Fix: Some rates are being saved as string instead of double
+
 **v1.5.1** *(6JAN21)*
 
-- Fix modules references
+- Fix: Modules references
 
 **v1.5.0** *(5JAN21)*
 

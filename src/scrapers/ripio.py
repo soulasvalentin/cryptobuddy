@@ -9,8 +9,8 @@ def scrap():
     tickers = res.json()
     for ticker in tickers:
         if ticker['ticker'] == 'BTC_ARS':
-            buy = ticker['sell_rate']
-            sell = ticker['buy_rate']
+            buy = float(ticker['sell_rate'])
+            sell = float(ticker['buy_rate'])
 
             table_service.save_current(EXCHANGE, buy, sell)
             table_service.save_history(EXCHANGE, buy, sell)

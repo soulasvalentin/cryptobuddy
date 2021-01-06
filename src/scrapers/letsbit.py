@@ -7,8 +7,8 @@ def scrap():
     url = 'https://letsbit.io/api/v1/exchange/public/markets/tickers'
     res = requests.get(url)
     obj = res.json()
-    buy = obj['btcars']['ticker']['buy']
-    sell = obj['btcars']['ticker']['sell']
+    buy = float(obj['btcars']['ticker']['buy'])
+    sell = float(obj['btcars']['ticker']['sell'])
 
     table_service.save_current(EXCHANGE, buy, sell)
     table_service.save_history(EXCHANGE, buy, sell)
