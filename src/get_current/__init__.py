@@ -15,6 +15,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         modulo_seconds = (datetime.utcnow().minute % 10) * 60 + datetime.utcnow().second
 
     if len(Cache.current_exchanges) == 0 or Cache.saved_time is None or seconds_from_cache > modulo_seconds:
+
+        data_source = 'database'
+
         entities = table_service.get_current()
 
         collection = Enumerable(entities).select(lambda x: { 
@@ -31,6 +34,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         Cache.saved_time = datetime.utcnow()
     else:
         print('Reading from cache')
+
+        data_source = 'cache'
+
         exchangelist = Cache.current_exchanges
         
         for exchange in exchangelist:
@@ -43,6 +49,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         status_code=200,
         headers={
             "content-type": "application/json",
-            "api-version": current_version
+            "api-version": current_version,
+            "data-source": data_source
         }
     )
