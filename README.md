@@ -50,6 +50,10 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 ## Changelog
 
+**v1.6.0** *(6JAN21)*
+
+- Added cache support for exchange rates
+
 **v1.5.2** *(6JAN21)*
 
 - Fix: Some rates are being saved as string instead of double

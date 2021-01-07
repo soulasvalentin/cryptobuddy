@@ -5,22 +5,39 @@ from shared import table_service
 import json
 from py_linq import Enumerable
 from datetime import datetime
+from shared.cache import Cache
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info(f"Get Current (v: {current_version})")
 
-    entities = table_service.get_current()
+    if Cache.saved_time is not None:
+        seconds_from_cache = (datetime.utcnow() - Cache.saved_time).total_seconds()
+        modulo_seconds = (datetime.utcnow().minute % 10) * 60 + datetime.utcnow().second
 
-    collection = Enumerable(entities).select(lambda x: { 
-        'exchange': x['RowKey'],
-        'date': str(x['Timestamp']),
-        'sell': x['sell'],
-        'buy': x['buy'],
-        'old': str(datetime.utcnow() - x['Timestamp'].replace(tzinfo=None))
-    })
+    if len(Cache.current_exchanges) == 0 or Cache.saved_time is None or seconds_from_cache > modulo_seconds:
+        entities = table_service.get_current()
 
-    body = json.dumps(collection.to_list())
+        collection = Enumerable(entities).select(lambda x: { 
+            'exchange': x['RowKey'],
+            'date': str(x['Timestamp'])[0:-6],
+            'sell': x['sell'],
+            'buy': x['buy'],
+            'old': str(datetime.utcnow() - x['Timestamp'].replace(tzinfo=None))
+        })
 
+        exchangelist = collection.to_list()
+
+        Cache.current_exchanges = exchangelist
+        Cache.saved_time = datetime.utcnow()
+    else:
+        print('Reading from cache')
+        exchangelist = Cache.current_exchanges
+        
+        for exchange in exchangelist:
+            exchange['old'] = str(datetime.utcnow() - datetime.strptime(exchange['date'], '%Y-%m-%d %H:%M:%S.%f'))
+            
+    body = json.dumps(exchangelist)
+    
     return func.HttpResponse(
         body=body,
         status_code=200,
