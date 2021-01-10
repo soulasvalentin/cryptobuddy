@@ -25,6 +25,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             'date': str(x['Timestamp'])[0:-6],
             'sell': x['sell'],
             'buy': x['buy'],
+            'origin': x['origin'],
+            'destination': x['destination'],
             'old': str(datetime.utcnow() - x['Timestamp'].replace(tzinfo=None))
         })
 

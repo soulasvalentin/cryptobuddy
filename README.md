@@ -42,6 +42,11 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 - `SA_NAME`
 - `SA_ACCOUNT_KEY`
 
+## Testing
+
+`cd tests`
+`python -m unittest discover -v`
+
 ## Docs
 
 - [Azure Functions Python developer guide](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python)
@@ -49,6 +54,10 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 - [Getting started with Azure Table storage API](https://docs.microsoft.com/en-us/azure/cosmos-db/table-storage-how-to-use-python)
 
 ## Changelog
+
+**v1.7.0** *(10JAN21)*
+
+- Store ticker origin and destination in DB
 
 **v1.6.0** *(6JAN21)*
 

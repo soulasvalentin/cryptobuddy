@@ -10,5 +10,5 @@ def scrap():
     buy = obj['data']['ticker']['BTC']['bid']
     sell = obj['data']['ticker']['BTC']['ask']
 
-    table_service.save_current(EXCHANGE, buy, sell)
-    table_service.save_history(EXCHANGE, buy, sell)
+    table_service.save_current(EXCHANGE, buy, sell, 'ARS', 'BTC')
+    table_service.save_history(EXCHANGE, buy, sell, 'ARS', 'BTC')

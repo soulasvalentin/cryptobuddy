@@ -10,5 +10,5 @@ def scrap():
     buy = float(obj['object']['btcars']['purchase_price'])
     sell = float(obj['object']['btcars']['selling_price'])
 
-    table_service.save_current(EXCHANGE, buy, sell)
-    table_service.save_history(EXCHANGE, buy, sell)
+    table_service.save_current(EXCHANGE, buy, sell, 'ARS', 'BTC')
+    table_service.save_history(EXCHANGE, buy, sell, 'ARS', 'BTC')

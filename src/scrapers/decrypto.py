@@ -12,5 +12,5 @@ def scrap():
             buy = ticker['dcb']
             sell = ticker['dca']
 
-            table_service.save_current(EXCHANGE, buy, sell)
-            table_service.save_history(EXCHANGE, buy, sell)
+            table_service.save_current(EXCHANGE, buy, sell, 'ARS', 'BTC')
+            table_service.save_history(EXCHANGE, buy, sell, 'ARS', 'BTC')
