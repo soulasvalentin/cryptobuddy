@@ -7,8 +7,15 @@ def scrap():
     url = 'https://api.satoshitango.com/v3/ticker/ARS'
     res = requests.get(url)
     obj = res.json()
-    buy = obj['data']['ticker']['BTC']['bid']
-    sell = obj['data']['ticker']['BTC']['ask']
 
-    table_service.save_current(EXCHANGE, buy, sell, 'ARS', 'BTC')
-    table_service.save_history(EXCHANGE, buy, sell, 'ARS', 'BTC')
+    # ARS - BTC
+    table_service.save_rates(EXCHANGE, 
+        obj['data']['ticker']['BTC']['bid'], 
+        obj['data']['ticker']['BTC']['ask'], 
+        'ARS', 'BTC')
+
+    # ARS - ETH
+    table_service.save_rates(EXCHANGE, 
+        obj['data']['ticker']['ETH']['bid'], 
+        obj['data']['ticker']['ETH']['ask'], 
+        'ARS', 'BTC')

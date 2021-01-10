@@ -41,6 +41,11 @@ def save_history(exchange, buy, sell, origin, destination):
 
     table_service.insert_or_merge_entity(HISTORY_TABLENAME, entity)
 
+def save_rates(exchange, buy, sell, origin, destination):
+    logging.info(f"[table_service] saving rates.. (exchange={exchange}, buy={buy}, sell={sell}, origin={origin}, destination={destination})")
+    save_current(exchange, buy, sell, origin, destination)
+    save_history(exchange, buy, sell, origin, destination)
+
 def get_current():
     logging.info("[table_service] get current..")
 

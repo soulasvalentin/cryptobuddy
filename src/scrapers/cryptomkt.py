@@ -4,11 +4,21 @@ from shared import table_service
 EXCHANGE = 'cryptomkt'
 
 def scrap():    
-    url = 'https://api.cryptomkt.com/v1/ticker?market=BTCARS'
+    url = 'https://api.cryptomkt.com/v1/ticker'
     res = requests.get(url)
     obj = res.json()
-    buy = float(obj['data'][0]['bid'])
-    sell = float(obj['data'][0]['ask'])
 
-    table_service.save_current(EXCHANGE, buy, sell, 'ARS', 'BTC')
-    table_service.save_history(EXCHANGE, buy, sell, 'ARS', 'BTC')
+    for ticker in obj['data']:
+        # ARS - BTC
+        if ticker['market'] == 'BTCARS':            
+            table_service.save_rates(EXCHANGE, 
+                float(ticker['bid']), 
+                float(ticker['ask']), 
+                'ARS', 'BTC')
+
+        # ARS - ETH
+        if ticker['market'] == 'ETHARS':            
+            table_service.save_rates(EXCHANGE, 
+                float(ticker['bid']), 
+                float(ticker['ask']), 
+                'ARS', 'ETH')

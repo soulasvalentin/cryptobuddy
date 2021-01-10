@@ -6,11 +6,19 @@ EXCHANGE = 'ripio'
 def scrap():    
     url = 'https://app.ripio.com/api/v3/public/rates/?country=AR'
     res = requests.get(url)
-    tickers = res.json()
-    for ticker in tickers:
-        if ticker['ticker'] == 'BTC_ARS':
-            buy = float(ticker['sell_rate'])
-            sell = float(ticker['buy_rate'])
+    obj = res.json()
 
-            table_service.save_current(EXCHANGE, buy, sell, 'ARS', 'BTC')
-            table_service.save_history(EXCHANGE, buy, sell, 'ARS', 'BTC')
+    for ticker in obj:
+        # ARS - BTC
+        if ticker['ticker'] == 'BTC_ARS':
+            table_service.save_rates(EXCHANGE, 
+                float(ticker['sell_rate']), 
+                float(ticker['buy_rate']), 
+                'ARS', 'BTC')
+        
+        # ARS - ETH
+        if ticker['ticker'] == 'ETH_ARS':
+            table_service.save_rates(EXCHANGE, 
+                float(ticker['sell_rate']), 
+                float(ticker['buy_rate']), 
+                'ARS', 'ETH')
