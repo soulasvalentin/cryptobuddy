@@ -58,10 +58,11 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 **v1.7.0** *(10JAN21)*
 
 - Store ticker origin and destination in DB
+- Add support for ETH from current exchanges
 
 **v1.6.0** *(6JAN21)*
 
-- Added cache support for exchange rates
+- Add cache support for exchange rates
 
 **v1.5.2** *(6JAN21)*
 
@@ -73,15 +74,15 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 **v1.5.0** *(5JAN21)*
 
-- Added get_current endpoint
+- Add get_current endpoint
 
 **v1.4.0** *(5JAN21)*
 
-- Added Decrypto support
+- Add Decrypto support
 
 **v1.3.0** *(5JAN21)*
 
-- Added Satoshitango support
+- Add Satoshitango support
 
 **v1.2.1** *(5JAN21)*
 
@@ -89,9 +90,9 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 **v1.2.0** *(5JAN21)*
 
-- Added BuenBit support
-- Added CryptoMarket support
-- Added Ripio support
+- Add BuenBit support
+- Add CryptoMarket support
+- Add Ripio support
 
 **v1.1.1** *(5JAN21)*
 
