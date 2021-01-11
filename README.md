@@ -59,6 +59,8 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 - Store ticker origin and destination in DB
 - Add support for ETH from current exchanges
+- Get_current endpoint returns ETH as well as BTC rates
+- Add error handling in scrapers
 
 **v1.6.0** *(6JAN21)*
 

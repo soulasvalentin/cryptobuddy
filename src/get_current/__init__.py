@@ -21,16 +21,15 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         entities = table_service.get_current()
 
         collection = Enumerable(entities).select(lambda x: { 
-            'exchange': x['RowKey'],
+            'exchange': x['PartitionKey'],
+            'ticker': x['RowKey'],
             'date': str(x['Timestamp'])[0:-6],
             'sell': x['sell'],
             'buy': x['buy'],
-            'origin': x['origin'],
-            'destination': x['destination'],
-            'old': str(datetime.utcnow() - x['Timestamp'].replace(tzinfo=None))
+            'time_old': str(datetime.utcnow() - x['Timestamp'].replace(tzinfo=None))
         })
 
-        exchangelist = collection.to_list()
+        exchangelist = collection.order_by(lambda x: x['ticker']).to_list()
 
         Cache.current_exchanges = exchangelist
         Cache.saved_time = datetime.utcnow()
