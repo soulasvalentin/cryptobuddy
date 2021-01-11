@@ -55,6 +55,10 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 ## Changelog
 
+**v1.7.1** *(1JAN21)*
+
+- Fix: History data is not storing ticker information
+
 **v1.7.0** *(10JAN21)*
 
 - Store ticker origin and destination in DB

@@ -30,10 +30,9 @@ def save_history(exchange, buy, sell, origin, destination):
     entity = {
         'PartitionKey': exchange,
         'RowKey': str(datetime.utcnow()),
+        'ticker': f'{origin}-{destination}',
         'buy': buy, 
         'sell': sell,
-        'origin': origin,
-        'destination': destination,
         'v': current_version
     }
 
