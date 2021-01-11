@@ -55,6 +55,12 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 ## Changelog
 
+**v1.8.0** *(1JAN21)*
+
+- Fix: Satoshitango ETH scrap is failing
+- Move scrapers run logic to scraper module
+- Add endpoint for running the scraper on-demand (/force_update)
+
 **v1.7.1** *(1JAN21)*
 
 - Fix: History data is not storing ticker information
