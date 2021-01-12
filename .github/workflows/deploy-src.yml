@@ -10,10 +10,6 @@ env:
   AZURE_FUNCTIONAPP_PACKAGE_PATH: 'src'
   PYTHON_VERSION: '3.7'
     
-defaults:
-  run:
-    working-directory: src
-    
 jobs:
   build-and-deploy-src:
     runs-on: ubuntu-latest
