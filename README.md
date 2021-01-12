@@ -4,6 +4,8 @@
 
 At this stage, only **BTC-ARS** rates from Argentinean exchanges are supported.
 
+![deploy-src](https://github.com/soulasvalentin/cryptobuddy/workflows/deploy-src/badge.svg?branch=main)
+
 ## Available endpoints
 
 > Base url: https://cryptobuddy.azurewebsites.net/api
