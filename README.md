@@ -2,11 +2,15 @@
 
 **CryptoBuddy** obtains cryptos *buy* & *sell* rates periodically and stores them to allow for market analysis. This is an **Azure Functions** project in Python. The function is triggered with a CRON expresion and retrieves and saves the data. A separate set of HTTP triggered functions will perform and return valuable analysis on the data when invoked.
 
-At this stage, only **BTC-ARS** rates from Argentinean exchanges are supported.
+At this stage, only **BTC-ARS** and **ETH-ARS** rates from Argentinean exchanges are supported.
 
 ![deploy-src](https://github.com/soulasvalentin/cryptobuddy/workflows/deploy-src/badge.svg?branch=main)
 
-## Available endpoints
+## Usage
+
+We offer a small (evergrowing) REST API set for consumption (see below). But at the same time we expose the data through a simple website: [**CryptoBuddy**](https://tinyurl.com/cryptobuddy).
+
+#### Available Endpoints
 
 > Base url: https://cryptobuddy.azurewebsites.net/api
 
