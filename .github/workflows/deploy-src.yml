@@ -3,6 +3,8 @@ name: deploy-src
 on:
   workflow_dispatch:
   push:
+    paths:
+      - 'src/'
     branches: [ main ]
 
 env:
