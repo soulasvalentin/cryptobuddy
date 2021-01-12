@@ -55,14 +55,18 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 ## Changelog
 
-**v1.8.0** *(1JAN21)*
+**v1.9.0** *(12JAN21)*
+
+- Add support for Github Actions
+
+**v1.8.0** *(11JAN21)*
 
 - Fix: Satoshitango ETH scrap is failing
 - Move scrapers run logic to scraper module
 - Add endpoint for running the scraper on-demand (/force_update)
 - Add basic web
 
-**v1.7.1** *(1JAN21)*
+**v1.7.1** *(11JAN21)*
 
 - Fix: History data is not storing ticker information
 
