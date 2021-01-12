@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="http.js"></script>
+    <script src="helpers.js"></script>
+    <title>CryptoBuddy</title>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA4vH+AP/mvwD+s0AA////AP6ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFVVVQAAAABVVVVVVQAABVVVVVVVUABVVVVFVVVVAFVVNURFVVUFVVRERERVVVVVVERVVFVVVVVVVFVEVVVVVVVURERVVVVVVVRFVEVVVVVVVEREVVVQVVVEQkVVVQBVVVUVRVVVAAVVVVVVVVAAAFVVVVVVAAAAAFVVVQAAD4HwAA4AcAAMADAACAAQAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAACAAQAAwAMAAOAHAAD4HwAA" rel="icon" type="image/x-icon" />
+</head>
+
+<body>
+
+    <h2 class="main-title">CryptoBuddy</h2>
+    <p id="status_subtitle" class="sub-title">Loading rates..</p>
+    <table id="rates_table" style="display: none;">
+        <thead>
+            <tr>
+                <th style="width: 150px">Exchange</th>
+                <th style="width: 100px">Ticker</th>
+                <th>Buy</th>
+                <th>Sell</th>
+                <th style="width: 120px" title="How old the data is">Old</th>
+            </tr>
+        </thead>
+        <tbody id="rates_table_body">
+        </tbody>
+    </table>
+    <script>
+        var baseurl = "https://cryptobuddy.azurewebsites.net/api/";
+
+        function httpRequestCurrentRates(callback) {
+            console.log('[requestCurrentRates] started..');
+
+            var url = baseurl + "get_current";
+            httpRequest(url, 'GET', (status, responseText) => {
+                if (status == 200) {
+                    var res = JSON.parse(responseText);
+                    console.log('[requestCurrentRates] success! data=', res);
+                    callback(res)
+                } else handleHttpNotSuccessResult('requestCurrentRates', status, responseText);
+            })
+        }
+
+        function fillTableWithRates(tableId, rates) {
+            // fill table
+            var tbody = document.getElementById(tableId);
+            tbody.innerHTML = null;
+
+            rates.forEach(rate => {
+
+                // normalize decimals
+                rate.buy = addZeroes(rate.buy);
+                rate.sell = addZeroes(rate.sell);
+
+                tbody.innerHTML += `<tr>
+                    <td style="width: 150px">${rate.exchange}</td>
+                    <td style="width: 100px">${rate.ticker}</td>
+                    <td class="rate"><div class="rate">${rate.buy}</div></td>
+                    <td class="rate"><div class="rate">${rate.sell}</div></td>
+                    <td style="width: 120px">${rate.old}</td>
+                </tr>`
+            });
+        }
+
+        function refreshRatesTableData() {
+            var status_subtitle = document.getElementById("status_subtitle");
+            var table = document.getElementById("rates_table");
+                status_subtitle.textContent = 'Loading rates..';
+
+            httpRequestCurrentRates((res) => {
+
+                status_subtitle.textContent = 'Rates';
+                table.style.display = 'table';
+                fillTableWithRates("rates_table_body", res);
+            });
+        }
+
+        // load
+        (function () {
+            refreshRatesTableData();
+            setInterval(refreshRatesTableData, 60 * 8 * 1000);
+        })();
+    </script>
+</body>
+
+</html>

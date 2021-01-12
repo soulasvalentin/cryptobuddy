@@ -1,0 +1,26 @@
+body {
+    font-family: Roboto;
+}
+
+.main-title {
+    margin-top: 0px;
+}
+
+th {
+    text-align: left;
+    color: #1068ec;
+}
+
+.sub-title {
+    margin-top: -18px;
+    color: #535353;
+}
+
+td.rate {
+    text-align: right;
+    /* width: 120px; */
+}
+
+div.rate {
+    margin-right: 30px;
+}
