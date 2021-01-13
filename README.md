@@ -1,6 +1,8 @@
 ## Introduction
 
-**CryptoBuddy** obtains cryptos *buy* & *sell* rates periodically and stores them to allow for market analysis. This is an **Azure Functions** project in Python. The function is triggered with a CRON expresion and retrieves and saves the data. A separate set of HTTP triggered functions will perform and return valuable analysis on the data when invoked.
+> Disclaimer: This is a proof-of-concept project for Python serverless applications in Azure and Github Actions CICD. By no means we intend this app data to be used in any kind of production or real-life scenarios. At the same time, we do not declare ourselves as experts on the tackled subjects. Any kind of feedback is welcomed, issues are open.
+
+**CryptoBuddy** obtains cryptos *buy* & *sell* rates periodically and stores them to allow for market analysis. This is an **Azure Functions** project in Python. The scraper function is triggered with a CRON expression and retrieves and saves the data into a DB. A separate set of HTTP triggered functions will perform and return valuable analysis on the data when invoked.
 
 At this stage, only **BTC-ARS** and **ETH-ARS** rates from Argentinean exchanges are supported.
 
@@ -11,11 +13,11 @@ At this stage, only **BTC-ARS** and **ETH-ARS** rates from Argentinean exchanges
 
 ## Usage
 
-We offer a small (evergrowing) REST API set for consumption (see below). But at the same time we expose the data through a simple website: [**CryptoBuddy**](https://tinyurl.com/cryptobuddy).
+We offer a small (evergrowing) REST API set for consumption (see below). But at the same time, we expose the data through a simple website: [**CryptoBuddy**](https://tinyurl.com/cryptobuddy).
 
 #### Available Endpoints
 
-> Base url: https://cryptobuddy.azurewebsites.net/api
+> Base URL: https://cryptobuddy.azurewebsites.net/api
 
 - `GET /get_current` Returns the latest rates of every exchange
 
@@ -53,20 +55,22 @@ If you wish to deploy your own version, create a **StorageAccount** with the tab
 
 ## Testing
 
-`cd tests`
-`python -m unittest discover -v`
+```bash
+cd tests
+python -m unittest discover -v
+```
 
 ## Docs
 
 - [Azure Functions Python developer guide](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python)
 - [Work with Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cpython%2Cbash)
-- [Getting started with Azure Table storage API](https://docs.microsoft.com/en-us/azure/cosmos-db/table-storage-how-to-use-python)
+- [Getting started with Azure Table Storage API](https://docs.microsoft.com/en-us/azure/cosmos-db/table-storage-how-to-use-python)
 
 ## Changelog
 
 **v1.9.0** *(12JAN21)*
 
-- Add support for Github Actions
+- Add support for Github Actions (web & src)
 
 **v1.8.0** *(11JAN21)*
 
