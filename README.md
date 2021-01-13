@@ -1,6 +1,6 @@
-## Introduction
+> ***Disclaimer**: This is a proof-of-concept project for Python serverless applications in Azure and Github Actions deployments. By no means we intend this app data to be used in any kind of production or real-life scenarios. At the same time, we do not declare ourselves as experts on the tackled subjects. Any kind of feedback is welcomed, issues are open.*
 
-> Disclaimer: This is a proof-of-concept project for Python serverless applications in Azure and Github Actions CICD. By no means we intend this app data to be used in any kind of production or real-life scenarios. At the same time, we do not declare ourselves as experts on the tackled subjects. Any kind of feedback is welcomed, issues are open.
+## Introduction
 
 **CryptoBuddy** obtains cryptos *buy* & *sell* rates periodically and stores them to allow for market analysis. This is an **Azure Functions** project in Python. The scraper function is triggered with a CRON expression and retrieves and saves the data into a DB. A separate set of HTTP triggered functions will perform and return valuable analysis on the data when invoked.
 
