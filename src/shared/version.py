@@ -1,1 +1,1 @@
-current_version = '1.9.2'
+current_version = '1.9.0'
