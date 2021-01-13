@@ -1,0 +1,20 @@
+name: deploy-web
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'web/**'
+    branches: [ main ]
+
+jobs:
+  deploy-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+        with:
+          source_dir: web
+          container_name: $web
+          connection_string: ${{ secrets.AZURE_BLOBSTORAGE_CONNSTR }}
+          sync: true
