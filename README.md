@@ -4,7 +4,10 @@
 
 At this stage, only **BTC-ARS** and **ETH-ARS** rates from Argentinean exchanges are supported.
 
+#### Deploy Status
+
 ![deploy-src](https://github.com/soulasvalentin/cryptobuddy/workflows/deploy-src/badge.svg?branch=main)
+![deploy-web](https://github.com/soulasvalentin/cryptobuddy/workflows/deploy-web/badge.svg)
 
 ## Usage
 
