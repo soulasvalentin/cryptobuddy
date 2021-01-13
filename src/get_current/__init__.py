@@ -26,7 +26,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             'date': str(x['Timestamp'])[0:-6],
             'sell': x['sell'],
             'buy': x['buy'],
-            'time_old': str(datetime.utcnow() - x['Timestamp'].replace(tzinfo=None))
+            'old': str(datetime.utcnow() - x['Timestamp'].replace(tzinfo=None))
         })
 
         exchangelist = collection.order_by(lambda x: x['ticker']).to_list()

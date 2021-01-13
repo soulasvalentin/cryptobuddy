@@ -29,21 +29,6 @@
         </tbody>
     </table>
     <script>
-        var baseurl = "https://cryptobuddy.azurewebsites.net/api/";
-
-        function httpRequestCurrentRates(callback) {
-            console.log('[requestCurrentRates] started..');
-
-            var url = baseurl + "get_current";
-            httpRequest(url, 'GET', (status, responseText) => {
-                if (status == 200) {
-                    var res = JSON.parse(responseText);
-                    console.log('[requestCurrentRates] success! data=', res);
-                    callback(res)
-                } else handleHttpNotSuccessResult('requestCurrentRates', status, responseText);
-            })
-        }
-
         // empty table, normalize data and fill table 
         function fillTableWithRates(tableId, rates) {
             // fill table
@@ -56,12 +41,15 @@
                 rate.buy = addZeroes(rate.buy);
                 rate.sell = addZeroes(rate.sell);
 
+                // transform 'old' to elapsed
+                rate.old = rate.old ? timeDifferenceFromStr(rate.old) : '';
+
                 tbody.innerHTML += `<tr>
                     <td style="width: 150px">${rate.exchange}</td>
                     <td style="width: 100px">${rate.ticker}</td>
                     <td class="rate"><div class="rate">${rate.buy}</div></td>
                     <td class="rate"><div class="rate">${rate.sell}</div></td>
-                    <td style="width: 120px">${rate.old}</td>
+                    <td class="elapsed" style="width: 120px">${rate.old}</td>
                 </tr>`
             });
         }

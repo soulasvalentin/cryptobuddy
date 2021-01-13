@@ -6,11 +6,26 @@ function addZeroes(num) {
         return 0;
     }
     // If there is no decimal, or the decimal is less than 2 digits, toFixed
-    if (String(num).split(".").length < 2 || String(num).split(".")[1].length<=2 ){
+    if (String(num).split(".").length < 2 || String(num).split(".")[1].length <= 2) {
         num = num.toFixed(2);
     }
     // Return the number
     return num;
+}
+
+function elapsedTimeStrToMs(str) {
+    const regex = new RegExp(/([0-9]*):([0-9]*):([0-9]*)/);
+    const res = regex.exec(str);
+
+    const hour = res[1] * 60 * 60 * 1000;
+    const min = res[2] * 60 * 1000;
+    const sec = res[3] * 1000;
+    
+    return hour + min + sec;
+}
+
+function timeDifferenceFromStr(elapsedStr) {
+    return timeDifference(elapsedTimeStrToMs(elapsedStr));
 }
 
 function timeDifference(elapsed) {
@@ -22,26 +37,26 @@ function timeDifference(elapsed) {
     var msPerYear = msPerDay * 365;
 
     if (elapsed < msPerMinute) {
-         return Math.round(elapsed/1000) + ' seconds ago';   
+        return Math.round(elapsed / 1000) + ' secs';
     }
 
     else if (elapsed < msPerHour) {
-         return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+        return Math.round(elapsed / msPerMinute) + ' mins';
     }
 
-    else if (elapsed < msPerDay ) {
-         return Math.round(elapsed/msPerHour ) + ' hours ago';   
+    else if (elapsed < msPerDay) {
+        return Math.round(elapsed / msPerHour) + ' hs';
     }
 
     else if (elapsed < msPerMonth) {
-        return 'approximately ' + Math.round(elapsed/msPerDay) + ' days ago';   
+        return Math.round(elapsed / msPerDay) + ' days';
     }
 
     else if (elapsed < msPerYear) {
-        return 'approximately ' + Math.round(elapsed/msPerMonth) + ' months ago';   
+        return Math.round(elapsed / msPerMonth) + ' months';
     }
 
     else {
-        return 'approximately ' + Math.round(elapsed/msPerYear ) + ' years ago';   
+        return Math.round(elapsed / msPerYear) + ' years';
     }
 }

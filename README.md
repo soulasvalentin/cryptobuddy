@@ -68,6 +68,11 @@ python -m unittest discover -v
 
 ## Changelog
 
+**v1.9.1** *(13JAN21)*
+
+- **[WEB]** Fix: 'Old' column is not showing elapsed time
+- **[SRC]** Fix: 'Get_current' endpoint is not returning 'old' from non-cached responses
+
 **v1.9.0** *(12JAN21)*
 
 - Add support for Github Actions (web & src)
