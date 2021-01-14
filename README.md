@@ -68,6 +68,10 @@ python -m unittest discover -v
 
 ## Changelog
 
+**v1.10.0** *(14JAN21)*
+
+- **[SRC]** 'Get_current' endpoint now returns `api-version` and `data-source` in response body.
+
 **v1.9.1** *(13JAN21)*
 
 - **[WEB]** Fix: 'Old' column is not showing elapsed time

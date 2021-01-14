@@ -43,14 +43,16 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         for exchange in exchangelist:
             exchange['old'] = str(datetime.utcnow() - datetime.strptime(exchange['date'], '%Y-%m-%d %H:%M:%S.%f'))
             
-    body = json.dumps(exchangelist)
+    body = {
+        'data': exchangelist,
+        'version': current_version,
+        'data-source': data_source
+    }
     
     return func.HttpResponse(
-        body=body,
+        body=json.dumps(body),
         status_code=200,
         headers={
             "content-type": "application/json",
-            "api-version": current_version,
-            "data-source": data_source
         }
     )
