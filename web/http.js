@@ -29,7 +29,7 @@ function httpRequestCurrentRates(callback) {
     var url = baseurl + "get_current";
     httpRequest(url, 'GET', (status, responseText) => {
         if (status == 200) {
-            var res = JSON.parse(responseText);
+            var res = JSON.parse(responseText).data;
             console.log('[requestCurrentRates] success! data=', res);
             callback(res)
         } else handleHttpNotSuccessResult('requestCurrentRates', status, responseText);
