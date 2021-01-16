@@ -21,8 +21,8 @@ def scrap():
             # USD - BTC
             if ticker['origen'] == 1 and ticker['destino'] == 3:                
                 table_service.save_rates(EXCHANGE, 
-                    ticker['dcb'], 
-                    ticker['dca'], 
+                    round(ticker['dcb'], 2), 
+                    round(ticker['dca'], 2), 
                     'USD', 'BTC')
     except:
         logging.error(f'"{EXCHANGE}" scraping failed')

@@ -68,6 +68,11 @@ python -m unittest discover -v
 
 ## Changelog
 
+**v1.11.1** *(15JAN21)*
+
+- **[SRC]** Fix: cache is not cleared after force update
+- **[SRC]** Fix: Decrypto USD-BTC is being stored with more than 2 decimals
+
 **v1.11.0** *(15JAN21)*
 
 - **[WEB]** Show API version in title

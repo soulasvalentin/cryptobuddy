@@ -1,1 +1,1 @@
-current_version = '1.11.0'
+current_version = '1.11.1'
