@@ -17,10 +17,10 @@ def scrap():
             'ARS', 'BTC')
 
         # ARS - ETH
-        table_service.save_rates(EXCHANGE, 
-            float(obj['ethars']['ticker']['buy']), 
-            float(obj['ethars']['ticker']['sell']), 
-            'ARS', 'ETH')
+        # table_service.save_rates(EXCHANGE, 
+        #     float(obj['ethars']['ticker']['buy']), 
+        #     float(obj['ethars']['ticker']['sell']), 
+        #     'ARS', 'ETH')
 
         # USD - BTC
         table_service.save_rates(EXCHANGE, 

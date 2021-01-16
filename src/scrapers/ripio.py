@@ -19,10 +19,10 @@ def scrap():
                     'ARS', 'BTC')
             
             # ARS - ETH
-            if ticker['ticker'] == 'ETH_ARS':
-                table_service.save_rates(EXCHANGE, 
-                    float(ticker['sell_rate']), 
-                    float(ticker['buy_rate']), 
-                    'ARS', 'ETH')
+            # if ticker['ticker'] == 'ETH_ARS':
+            #     table_service.save_rates(EXCHANGE, 
+            #         float(ticker['sell_rate']), 
+            #         float(ticker['buy_rate']), 
+            #         'ARS', 'ETH')
     except:
         logging.error(f'"{EXCHANGE}" scraping failed')

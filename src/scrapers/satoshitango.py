@@ -17,9 +17,9 @@ def scrap():
             'ARS', 'BTC')
 
         # ARS - ETH
-        table_service.save_rates(EXCHANGE, 
-            obj['data']['ticker']['ETH']['bid'], 
-            obj['data']['ticker']['ETH']['ask'], 
-            'ARS', 'ETH')
+        # table_service.save_rates(EXCHANGE, 
+        #     obj['data']['ticker']['ETH']['bid'], 
+        #     obj['data']['ticker']['ETH']['ask'], 
+        #     'ARS', 'ETH')
     except:
         logging.error(f'"{EXCHANGE}" scraping failed')

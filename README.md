@@ -68,6 +68,10 @@ python -m unittest discover -v
 
 ## Changelog
 
+**v1.12.0** *(15JAN21)*
+
+- **[SRC]** Remove ETH rates
+
 **v1.11.1** *(15JAN21)*
 
 - **[SRC]** Fix: cache is not cleared after force update
