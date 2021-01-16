@@ -21,5 +21,11 @@ def scrap():
             float(obj['ethars']['ticker']['buy']), 
             float(obj['ethars']['ticker']['sell']), 
             'ARS', 'ETH')
+
+        # USD - BTC
+        table_service.save_rates(EXCHANGE, 
+            float(obj['btcusd']['ticker']['buy']), 
+            float(obj['btcusd']['ticker']['sell']), 
+            'USD', 'BTC')
     except:
         logging.error(f'"{EXCHANGE}" scraping failed')

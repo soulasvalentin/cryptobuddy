@@ -11,12 +11,18 @@ def scrap():
         obj = res.json()
 
         for ticker in obj['data']:
+            # ARS - BTC
             if ticker['origen'] == 2 and ticker['destino'] == 3:
-
-                # ARS - BTC
                 table_service.save_rates(EXCHANGE, 
                     ticker['dcb'], 
                     ticker['dca'], 
                     'ARS', 'BTC')
+
+            # USD - BTC
+            if ticker['origen'] == 1 and ticker['destino'] == 3:                
+                table_service.save_rates(EXCHANGE, 
+                    ticker['dcb'], 
+                    ticker['dca'], 
+                    'USD', 'BTC')
     except:
         logging.error(f'"{EXCHANGE}" scraping failed')

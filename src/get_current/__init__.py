@@ -29,7 +29,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             'old': str(datetime.utcnow() - x['Timestamp'].replace(tzinfo=None))
         })
 
-        exchangelist = collection.order_by(lambda x: x['ticker']).to_list()
+        exchangelist = collection.order_by(lambda x: x['ticker']).order_by(lambda x: x['sell']).to_list()
 
         Cache.current_exchanges = exchangelist
         Cache.saved_time = datetime.utcnow()
