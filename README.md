@@ -68,6 +68,10 @@ python -m unittest discover -v
 
 ## Changelog
 
+**v1.13.0** *(16JAN21)*
+
+- **[WEB]** Elapsed time auto-refresh
+
 **v1.12.0** *(15JAN21)*
 
 - **[SRC]** Remove ETH rates

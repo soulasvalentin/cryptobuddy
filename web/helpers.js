@@ -24,11 +24,7 @@ function elapsedTimeStrToMs(str) {
     return hour + min + sec;
 }
 
-function timeDifferenceFromStr(elapsedStr) {
-    return timeDifference(elapsedTimeStrToMs(elapsedStr));
-}
-
-function timeDifference(elapsed) {
+function elapsedTimeMsToFriendlyStr(elapsed) {
 
     var msPerMinute = 60 * 1000;
     var msPerHour = msPerMinute * 60;
@@ -45,7 +41,7 @@ function timeDifference(elapsed) {
     }
 
     else if (elapsed < msPerDay) {
-        return Math.round(elapsed / msPerHour) + ' hs';
+        return Math.round(elapsed / msPerHour) + ' hours';
     }
 
     else if (elapsed < msPerMonth) {
