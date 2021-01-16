@@ -2,7 +2,7 @@
 
 ## Introduction
 
-**CryptoBuddy** obtains cryptos *buy* & *sell* rates periodically and stores them to allow for market analysis. This is an **Azure Functions** project in Python. The scraper function is triggered with a CRON expression and retrieves and saves the data into a DB. A separate set of HTTP triggered functions will perform and return valuable analysis on the data when invoked.
+**CryptoBuddy** obtains cryptos *buy* & *sell* rates periodically and stores them to allow for market analysis. This is an **Azure Functions** project in Python. The scraper function is triggered with a CRON expression and retrieves and saves the data into a DB. A separate set of HTTP triggered functions will perform and return valuable analysis on the data when invoked. The information is intended to help users decide what's the best option when buying cryptos with local money.
 
 At this stage, only **BTC-ARS** and **ETH-ARS** rates from Argentinean exchanges are supported.
 
