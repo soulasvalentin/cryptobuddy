@@ -71,6 +71,8 @@ python -m unittest discover -v
 **v1.13.0** *(16JAN21)*
 
 - **[WEB]** Elapsed time auto-refresh
+- **[SRC]** Wrap scrapers execution 
+- **[SRC]** Implement batch upserts in table_service
 
 **v1.12.0** *(15JAN21)*
 

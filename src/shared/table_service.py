@@ -1,8 +1,5 @@
-import logging
-from datetime import datetime
-from azure.cosmosdb.table.tableservice import TableService
+from azure.cosmosdb.table.tableservice import TableService, TableBatch
 from azure.cosmosdb.table.models import Entity
-from shared.version import current_version
 import os
 
 table_name = os.environ["SA_NAME"]
@@ -12,40 +9,22 @@ table_service = TableService(account_name=table_name, account_key=table_account_
 CURRENT_TABLENAME = 'current'
 HISTORY_TABLENAME = 'history'
 
-def save_current(exchange, buy, sell, origin, destination):
-    logging.info("[table_service] saving as current..")
+def save_current(partial_entities):
+    batch = TableBatch()
 
-    entity = {
-        'PartitionKey': exchange,
-        'RowKey': f'{origin}-{destination}',
-        'buy': buy, 
-        'sell': sell
-    }
+    for partial_entity in partial_entities:
+        entity = {
+            'PartitionKey': 'current',
+            'RowKey': f"{partial_entity['exchange']}-{partial_entity['ticker']}",
+            'exchange': partial_entity['exchange'], 
+            'ticker': partial_entity['ticker'], 
+            'buy': partial_entity['buy'], 
+            'sell': partial_entity['sell']
+        }
+        batch.insert_or_merge_entity(entity)
 
-    table_service.insert_or_merge_entity(CURRENT_TABLENAME, entity)
-
-def save_history(exchange, buy, sell, origin, destination):
-    logging.info("[table_service] saving as history..")
-
-    entity = {
-        'PartitionKey': exchange,
-        'RowKey': str(datetime.utcnow()),
-        'ticker': f'{origin}-{destination}',
-        'buy': buy, 
-        'sell': sell,
-        'v': current_version
-    }
-
-    table_service.insert_or_merge_entity(HISTORY_TABLENAME, entity)
-
-def save_rates(exchange, buy, sell, origin, destination):
-    logging.info(f"[table_service] saving rates.. (exchange={exchange}, buy={buy}, sell={sell}, origin={origin}, destination={destination})")
-    save_current(exchange, buy, sell, origin, destination)
-    save_history(exchange, buy, sell, origin, destination)
+    table_service.commit_batch(CURRENT_TABLENAME, batch)
 
 def get_current():
-    logging.info("[table_service] get current..")
-
     entities = table_service.query_entities(CURRENT_TABLENAME)
-
     return entities.items

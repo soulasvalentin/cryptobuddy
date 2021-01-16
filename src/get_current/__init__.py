@@ -21,8 +21,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         entities = table_service.get_current()
 
         collection = Enumerable(entities).select(lambda x: { 
-            'exchange': x['PartitionKey'],
-            'ticker': x['RowKey'],
+            'exchange': x['exchange'],
+            'ticker': x['ticker'],
             'date': str(x['Timestamp'])[0:-6],
             'sell': x['sell'],
             'buy': x['buy'],
