@@ -20,7 +20,7 @@ function elapsedTimeStrToMs(str) {
     const hour = res[1] * 60 * 60 * 1000;
     const min = res[2] * 60 * 1000;
     const sec = res[3] * 1000;
-    
+
     return hour + min + sec;
 }
 
@@ -59,4 +59,8 @@ function timeDifference(elapsed) {
     else {
         return Math.round(elapsed / msPerYear) + ' years';
     }
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

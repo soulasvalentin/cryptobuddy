@@ -68,6 +68,11 @@ python -m unittest discover -v
 
 ## Changelog
 
+**v1.11.0** *(15JAN21)*
+
+- **[WEB]** Show API version in title
+- **[WEB]** Add thousands separator in rates
+
 **v1.10.0** *(14JAN21)*
 
 - **[SRC]** 'Get_current' endpoint now returns `api-version` and `data-source` in response body.

@@ -7,7 +7,7 @@
     <link href="style.css" rel="stylesheet">
     <script src="http.js"></script>
     <script src="helpers.js"></script>
-    <title>CryptoBuddy</title>
+    <title id="title">CryptoBuddy</title>
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA4vH+AP/mvwD+s0AA////AP6ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFVVVQAAAABVVVVVVQAABVVVVVVVUABVVVVFVVVVAFVVNURFVVUFVVRERERVVVVVVERVVFVVVVVVVFVEVVVVVVVURERVVVVVVVRFVEVVVVVVVEREVVVQVVVEQkVVVQBVVVUVRVVVAAVVVVVVVVAAAFVVVVVVAAAAAFVVVQAAD4HwAA4AcAAMADAACAAQAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAACAAQAAwAMAAOAHAAD4HwAA" rel="icon" type="image/x-icon" />
 </head>
 
@@ -29,6 +29,9 @@
         </tbody>
     </table>
     <script>
+        var titlePrefix = 'CryptoBuddy';
+        var titleRef = document.getElementById('title');
+
         // empty table, normalize data and fill table 
         function fillTableWithRates(tableId, rates) {
             // fill table
@@ -38,8 +41,8 @@
             rates.forEach(rate => {
 
                 // normalize decimals
-                rate.buy = addZeroes(rate.buy);
-                rate.sell = addZeroes(rate.sell);
+                rate.buy = numberWithCommas(addZeroes(rate.buy));
+                rate.sell = numberWithCommas(addZeroes(rate.sell));
 
                 // transform 'old' to elapsed
                 rate.old = rate.old ? timeDifferenceFromStr(rate.old) : '';
@@ -60,10 +63,10 @@
                 status_subtitle.textContent = 'Loading rates..';
 
             httpRequestCurrentRates((res) => {
-
                 status_subtitle.textContent = 'Rates';
                 table.style.display = 'table';
-                fillTableWithRates("rates_table_body", res);
+                fillTableWithRates("rates_table_body", res.data);
+                titleRef.textContent = `${titlePrefix} | ${res.version}`;
             });
         }
 

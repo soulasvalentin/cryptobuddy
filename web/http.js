@@ -24,13 +24,10 @@ function handleHttpNotSuccessResult(prefix, status, responseText, doalert = true
 const baseurl = "https://cryptobuddy.azurewebsites.net/api/";
 
 function httpRequestCurrentRates(callback) {
-    console.log('[requestCurrentRates] started..');
-
     var url = baseurl + "get_current";
     httpRequest(url, 'GET', (status, responseText) => {
         if (status == 200) {
-            var res = JSON.parse(responseText).data;
-            console.log('[requestCurrentRates] success! data=', res);
+            var res = JSON.parse(responseText);
             callback(res)
         } else handleHttpNotSuccessResult('requestCurrentRates', status, responseText);
     })
