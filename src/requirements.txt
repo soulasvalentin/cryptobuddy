@@ -12,7 +12,7 @@ bs4==0.0.1
 certifi==2020.12.5
 cffi==1.14.4
 chardet==4.0.0
-cryptography==3.3.1
+cryptography==41.0.2
 future==0.18.2
 idna==2.10
 mock==4.0.3
